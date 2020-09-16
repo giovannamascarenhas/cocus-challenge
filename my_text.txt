@@ -1,0 +1,14 @@
+Develop a Webservice in Python that reads a local textfile and on call of a GET function
+returns a random line of that file. The random line shall be returned encapsulated in
+JSON or XML depending on the request that is made. The file will have less than 10000
+Lines.
+Write a script that consumes the web-service from #1, takes the resulting line and
+inserts it into a database including the character that occurs most often in that line.
+Write a script that renders a Jinja2 Template (or other compatible template languages)
+with 5 example lines from the database including the character that occurs most often
+on each line. Additionally, fetch the character that occurs most often on the whole
+database. Add a button to that page that - via JavaScript - fetches another line from
+the webservice and merges that into the output.
+Django is a mandatory requirement for web framework
+The entire reading component must be written in English
+Please send us the challenge within seven days.
