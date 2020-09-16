@@ -9,8 +9,7 @@ from .models import TextModel
 
 
 # Find a file with .txt extension
-textfiles = glob.glob('*.txt')
-FILENAME = "".join([file for file in textfiles])
+FILENAME = "my_text.txt"
 
 
 def read_file(filename) -> str:
