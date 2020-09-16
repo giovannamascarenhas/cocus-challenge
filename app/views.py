@@ -60,8 +60,27 @@ def save_text_data_into_database(data: dict) -> dict:
         return new_text_line 
 
 
+def add_one_line(request):
+    if request.is_ajax():
+        text = read_file(FILENAME)
+        text_data_dict_info = returns_text_data(text)
+        data_text = save_text_data_into_database(text_data_dict_info)
+        if data_text:
+            data = {
+                "line": data_text.text_line,
+                "most_frequency_character": data_text.most_frequency_character,
+                "index_line": data_text.line_index
+            }
+            response = json.dumps(data)
+            return HttpResponse(response, content_type='application/json')
+        else:
+            message = "Data is empty"
+            return HttpResponse(message, content_type='application/json')
+    else:
+        raise Http404()
+
+
 def list_text_line(request):
-    text = read_file(FILENAME)
-    text_data_dict_info = returns_text_data(text)
-    print(save_text_data_into_database(text_data_dict_info))
-    return HttpResponse('Ola')
+    template_name = "app/index.html"
+    list_text_line = TextModel.objects.all()
+    return render(request, template_name, {"list_text_line": list_text_line})
