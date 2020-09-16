@@ -60,7 +60,7 @@ def save_text_data_into_database(data: dict) -> dict:
         return new_text_line 
 
 
-def add_one_line(request):
+def add_another_line(request):
     if request.is_ajax():
         text = read_file(FILENAME)
         text_data_dict_info = returns_text_data(text)

@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path
 
-from app.views import list_text_line, add_one_line
+from app.views import list_text_line, add_another_line
 
 
 urlpatterns = [
-    path('show/', list_text_line, name="show-data"),
-    path('ajax/add/', add_one_line, name='add_one_line'),
+    path('list/', list_text_line, name="list_text_line"),
+    path('ajax/add/', add_another_line, name='add_another_line'),
     path('admin/', admin.site.urls),
 ]
