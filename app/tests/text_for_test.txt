@@ -1,0 +1,6 @@
+on each line. Additionally, fetch the character that occurs most often on the whole
+database. Add a button to that page that - via JavaScript - fetches another line from
+the webservice and merges that into the output.
+Django is a mandatory requirement for web framework
+The entire reading component must be written in English
+Please send us the challenge within seven days.
