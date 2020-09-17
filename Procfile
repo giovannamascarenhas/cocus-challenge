@@ -1,1 +1,1 @@
-web: gunicorn cosus_project.wsgi --log-file -
+web: gunicorn cocus_project.wsgi --log-file -
