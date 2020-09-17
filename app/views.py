@@ -9,7 +9,8 @@ from .models import TextModel
 
 
 # Find a file with .txt extension
-FILENAME = "my_text.txt"
+for filename in glob.glob('textfile_directory/*'):
+    FILENAME = filename
 
 
 def read_file(filename) -> str:
