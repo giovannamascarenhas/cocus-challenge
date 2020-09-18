@@ -2,13 +2,15 @@ from django.test import TestCase, Client
 from django.urls import reverse
 
 from app.views import (
-    read_file,
-    clean_text,
-    returns_text_data,
     counting_letters,
     save_text_data_into_database,
     add_another_line,
     list_text_line
+)
+from webservice.views import (
+    read_file,
+    clean_text,
+    returns_text_data,
 )
 from app.models import TextModel
 
@@ -17,7 +19,7 @@ class TestView(TestCase):
     def setUp(self):
         self.client = Client()
         self.list_text_line_url = reverse("list_text_line")
-        self.filename = "my_text.txt"
+        self.filename = "textfile_directory/my_text.txt"
         self.generated_text = read_file(self.filename)
         self.text_data = {
             "line_text": "The entire reading component must be written in English", 
@@ -39,7 +41,6 @@ class TestView(TestCase):
         self.assertIsInstance(cleaned_text, str)
 
     def test_returns_text_data(self):
-        # import pdb; pdb.set_trace()
         data_text = returns_text_data(self.generated_text)
         self.assertIn("line_text", data_text.keys())
         self.assertIn("index_line", data_text.keys())
