@@ -1,11 +1,10 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from app.views import list_text_line, add_another_line
+from app import urls as app_urls
 
 
 urlpatterns = [
-    path('', list_text_line, name="list_text_line"),
-    path('ajax/add/', add_another_line, name='add_another_line'),
+    path("", include(app_urls)),
     path('admin/', admin.site.urls),
 ]
