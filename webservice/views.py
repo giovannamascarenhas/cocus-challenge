@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from random import randint
+import json
 
 
 def read_file(filename) -> str:
@@ -19,7 +19,9 @@ def returns_text_data(text: str) -> dict:
     random_number = randint(1, array_of_text_len-1)
     choosed_line = array_of_text[random_number]
     
-    return {
+    data = {
         "line_text": choosed_line,
         "index_line": array_of_text.index(choosed_line)
     }
+    response = json.dumps(data)
+    return response

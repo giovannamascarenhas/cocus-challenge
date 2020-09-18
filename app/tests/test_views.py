@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 from django.urls import reverse
+import json
 
 from app.views import (
     counting_letters,
@@ -42,9 +43,10 @@ class TestView(TestCase):
 
     def test_returns_text_data(self):
         data_text = returns_text_data(self.generated_text)
-        self.assertIn("line_text", data_text.keys())
-        self.assertIn("index_line", data_text.keys())
-        self.assertIsInstance(data_text, dict)
+        data_text_to_python_dict = json.loads(data_text)
+        self.assertIn("line_text", data_text_to_python_dict.keys())
+        self.assertIn("index_line", data_text_to_python_dict.keys())
+        self.assertIsInstance(data_text_to_python_dict, dict)
 
     def test_counting_letters(self):
         text = "This is a random text for tests purposes."

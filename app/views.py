@@ -44,7 +44,7 @@ def save_text_data_into_database(data: dict) -> dict:
 def add_another_line(request):
     if request.is_ajax():
         text = read_file(FILENAME)
-        text_data_dict_info = returns_text_data(text)
+        text_data_dict_info = json.loads(returns_text_data(text))
         data_text = save_text_data_into_database(text_data_dict_info)
         if data_text:
             data = {
