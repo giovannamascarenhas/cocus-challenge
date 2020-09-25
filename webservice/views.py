@@ -2,7 +2,7 @@ from random import randint
 import json
 
 
-def read_file(filename) -> str:
+def read_file(filename: str) -> str:
     with open(filename) as file:
         return file.read()
 
@@ -13,7 +13,7 @@ def clean_text(text: str) -> list:
     return cleaned_text
 
 
-def returns_text_data(text: str) -> dict:
+def returns_text_data(text: str) -> str:
     array_of_text = text.split("\n")
     array_of_text_len = len(array_of_text)
     random_number = randint(1, array_of_text_len-1)

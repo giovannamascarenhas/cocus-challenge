@@ -17,13 +17,13 @@ for filename in glob.glob('textfile_directory/*'):
     FILENAME = filename
 
 
-def counting_letters(line_text: str) -> dict:
+def counting_letters(line_text: str) -> Counter:
     line_text_without_blanck_space = clean_text(line_text)
     number_of_letters_per_line = Counter(line_text_without_blanck_space)
     return number_of_letters_per_line
 
 
-def save_text_data_into_database(data: dict) -> dict:
+def save_text_data_into_database(data: dict) -> TextModel:
     text_line = data["line_text"]
     text_index = data["index_line"]
 
@@ -32,14 +32,10 @@ def save_text_data_into_database(data: dict) -> dict:
     most_repeated_letter = max(letters_counter, key=lambda key: letters_counter[key])
 
     new_text_line = TextModel(text_line=text_line, most_frequency_character=most_repeated_letter, line_index=text_index)
-
-    # Checks if text index exists into database
-    if TextModel.objects.filter(line_index=text_index):
-        return {}
-    else:
-        new_text_line.save()
-        return new_text_line 
-
+    new_text_line.save()
+    
+    return new_text_line 
+    
 
 def add_another_line(request):
     if request.is_ajax():
