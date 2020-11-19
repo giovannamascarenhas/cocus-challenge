@@ -9,13 +9,6 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <!-- Ajax link -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
-    />
-    <!-- Bootstrao JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>COCUS Challenge</title>
 
     <style>
@@ -80,7 +73,6 @@
             type: "GET",
             url: "/ajax/add/",
             success: function (data) {
-              console.log("Text", data.line);
               const text = document.createTextNode(data.line);
               const mostFrequencyCharacter = document.createTextNode(data.most_frequency_character);
               const indexLine = data.index_line;
@@ -97,7 +89,7 @@
               tableElement.appendChild(trElement);
             },
           }).fail(function (error) {
-            alert(error.responseText);
+            alert("Line text already on database");
           });
         });
       });
